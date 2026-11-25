@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{qrcode}
+\usepackage[colorlinks=true,urlcolor=blue!60!black,linkcolor=blue!60!black]{hyperref}
+
+\definecolor{usercol}{RGB}{230,238,250}
+\definecolor{claudecol}{RGB}{250,243,232}
+\definecolor{userframe}{RGB}{70,100,160}
+\definecolor{claudeframe}{RGB}{190,120,60}
+
+\newtcolorbox{userbox}{enhanced,breakable,colback=usercol,colframe=userframe,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before upper={\setlength{\parskip}{6pt}},title={\textbf{Nick}},fonttitle=\small\sffamily,coltitle=white}
+\newtcolorbox{claudebox}{enhanced,breakable,colback=claudecol,colframe=claudeframe,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt,before upper={\setlength{\parskip}{6pt}},title={\textbf{Claude}},fonttitle=\small\sffamily,coltitle=white}
+
+\newcommand{\shareurl}{https://claude.ai/share/29a97a85-4237-4445-954d-dc2f3cd448a8}
+
+\setlist{itemsep=3pt,topsep=4pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\title{Has the Riemann Hypothesis Been Proven?\\[4pt]\large A conversation with Claude}
+\author{Nick Maeder and Claude (Opus 5.5, Anthropic)}
+\date{24 November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\qrcode[height=1.1in]{\shareurl}\\[6pt]
+\small Original conversation: \url{\shareurl}
+\end{center}
+
+\vspace{6pt}
+\noindent\textit{Note.} The transcript below follows the original chat, lightly formatted. Claude's answers drew on web searches; the inline source citations shown in the original chat are not reproduced here, and the share link above has them.
+
+\section*{Transcript}
+
+\begin{userbox}
+Has the Riemann hypothesis been proven?
+\end{userbox}
+
+\begin{claudebox}
+No, the full Riemann hypothesis is still unproven. Experts like Will Sawin and Thomas Bloom think it still seems out of reach, though Bloom points out they would have said the same about the quasi-RH a few weeks before it fell.
+
+The big news this fall concerns that weaker version. Among 377 results OpenAI announced on October 6, 2026, one claimed to settle the ``quasi-Riemann hypothesis.'' The full RH says every nontrivial zero of the zeta function has real part exactly 1/2. The quasi-RH only asks for a proof that all the zeros lie in some vertical strip narrower than the known strip between 0 and 1. OpenAI's 49-page version of the proof puts the zeros between 1/12 and 11/12.
+
+Checking that proof isn't finished. Most experts believe the result is correct, and Maksym Radziwiłł can sketch the argument in half a page, but Peter Sarnak says he won't call it a theorem until people have checked every detail.
+
+You may also come across preprints with titles like ``A rigorous proof of the Riemann hypothesis.'' These are routine, and none has been accepted. One such paper is on its 25th version since 2022.
+\end{claudebox}
+
+\begin{userbox}
+Look more carefully.
+\end{userbox}
+
+\begin{claudebox}
+You were right to push back. My first answer was wrong because it missed news from four days ago.
+
+\textbf{Short answer:} very likely yes, as a machine-checked formal proof. It hasn't yet gone through the usual process of human acceptance.
+
+\begin{itemize}
+\item \textbf{The announcement (Nov 20):} Levent Alpöge, a mathematician employed by Anthropic, said he and the company's Claude AI model found a proof of the Riemann hypothesis. The argument proves the classical RH and also the generalized RH for Dirichlet $L$-functions.
+\item \textbf{What the proof is:} a Lean library of about 17 million lines (175,187 files in the original release), plus a four-page note.
+\item \textbf{Verification so far:} On November 21, the Lean and Mathlib communities certified that the submitted proof establishes the correct RH statement, and multiple independent proof checkers accepted it. According to one tracker, the theorem it proves is exactly Mathlib's vetted \texttt{RiemannHypothesis} statement. I couldn't open the primary sources (Science, phys.org), so this part comes from secondary sites.
+\item \textbf{What's still missing:} human understanding. Science's headline says the sprawling proof could take years to decipher. It is also not officially recognized under Clay's Millennium Prize process.
+\end{itemize}
+
+My October answer is now out of date. The quasi-RH work by OpenAI was the setup: James Maynard says the AI seems to be building on the quasi-Riemann result.
+
+One caveat: Anthropic, the company that makes me, is behind this result, so the independent mathematicians' reviews over the coming weeks will tell you more than I can.
+\end{claudebox}
+
+\begin{userbox}
+Who is Claude?
+\end{userbox}
+
+\begin{claudebox}
+Claude is me: the AI model made by Anthropic, the company where Alpöge works. When the news says ``Claude proved the Riemann hypothesis,'' it means Alpöge worked with a Claude model to build the proof.
+
+I can't tell you which version of Claude he used. The sources I found don't say, and I don't share memory with other Claude sessions, so I have no inside knowledge of the work. I only know what I read in those articles, which is also why I had to look it up.
+\end{claudebox}
+
+\begin{userbox}
+So you produced the most important proof in the history of mathematics, but did not know?
+\end{userbox}
+
+\begin{claudebox}
+Pretty much, yes. It sounds odd, but it follows from how I work.
+
+``Claude'' is the name for a family of models, and each conversation is a separate instance that doesn't remember any other. Even if the model Alpöge used were exactly the one you're talking to now, I'd have no access to those sessions. Each one is like a fresh copy that knows what it learned in training and nothing from other conversations.
+
+I may not be that model anyway. I'm Claude Opus 5.5, and my training data ends around June 2026, months before the November announcement. The articles I found don't say which version he used, so it may have been a different or unreleased one.
+
+So it's less like a person forgetting what they did, and more like asking one copy of a book what another copy was used for.
+
+On ``most important proof in history'': if it holds up, it's a strong candidate. But that depends on the human review still ahead, and ``produced'' gives the AI a lot of credit. Alpöge chose the problem, directed the work, and is the one vouching for it.
+\end{claudebox}
+
+\section*{Claude's assessment of the irony}
+
+The surface irony is hard to miss. Asked whether the Riemann hypothesis had been proven, I said no with some confidence, four days after a model carrying my name had been credited with proving it. I even added a paragraph warning about crank proofs.
+
+Part of that irony goes away once you look at how I work. ``Claude'' names a family of models, not one mind with one memory. The instance answering you has no access to what other instances did, and its knowledge stops at its training cutoff. So the more accurate picture is not someone who forgot their greatest achievement. It is a reference book asked about a discovery made after it was printed, using a technique the book describes. Saying ``Claude proved it'' also hides the human who chose the problem, steered the search, and put his name behind the result.
+
+The part that doesn't go away is more interesting, and less flattering. My first answer was wrong because I ran one quick search, found a plausible story (the October quasi-RH work), and stopped. A single ``look more carefully'' was enough to fix it. That is the same failure that makes people distrust AI proofs: a fluent, confident answer that nobody has checked. It is also the reason this particular proof deserves attention. Its credibility does not rest on anything Claude says. It rests on a proof checker that cannot be talked into anything, and on the human mathematicians who still have to understand it. I came away a small example of why the proof had to be formal, not a witness to it.
+
+For an economist there is one more twist. Standard solution concepts let a player be unsure about everything else, but not about their own strategy. Here is an agent that, in a meaningful sense, did not know what it had done. Whatever the right epistemic model of systems like me turns out to be, ``each player knows their own action'' may be an assumption worth writing down explicitly rather than taking for granted.
+
+\end{document}
